@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Automatizaciones con IA — Digital Power Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/Common.jsx"></script>
+<script type="text/babel">
+
+function ServiceNav() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <nav className="sp-nav">
+      <div className="sp-nav-inner">
+        <a href="index.html" className="logo">
+          <span className="logo-mark"/>
+          <span><b>Digital Power</b> <span className="muted">Studios</span></span>
+        </a>
+        <a href="index.html" className="sp-back-link">← Volver al inicio</a>
+        <button className="nav-cta" onClick={openModal}>Contactarnos</button>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <section className="sp-hero">
+      <div className="sp-hero-bg">
+        <div className="grid-bg"/>
+        <div className="orb orb-a"/>
+        <div className="orb orb-b"/>
+      </div>
+      <div className="wrap" style={{position:'relative',zIndex:2}}>
+        <Reveal>
+          <span className="sp-badge">SERVICIO — Automatizaciones con IA</span>
+        </Reveal>
+        <Reveal delay={1}>
+          <h1 className="sp-title">
+            Que tu negocio funcione en<br/>
+            <span className="serif" style={{color:'#a89bff'}}>piloto automático</span>
+          </h1>
+        </Reveal>
+        <Reveal delay={2}>
+          <p className="sp-sub">Diseñamos sistemas inteligentes que trabajan por ti las 24 horas: captan leads, responden clientes y gestionan procesos mientras tú te dedicas a lo que importa.</p>
+        </Reveal>
+        <Reveal delay={3}>
+          <ul className="sp-bullets">
+            {['Cero tareas repetitivas que roban tu tiempo','Tu negocio trabajando solo mientras tú descansas','Clientes atendidos en segundos, sin errores'].map((b,i)=>(
+              <li key={i}><span className="bul-dot"/>{b}</li>
+            ))}
+          </ul>
+        </Reveal>
+        <Reveal delay={4}>
+          <div style={{display:'flex',gap:'14px',flexWrap:'wrap',alignItems:'center'}}>
+            <button className="btn btn-primary" onClick={openModal}><span>Contactarnos <Icon.Arrow s={14}/></span></button>
+            <a href="index.html" className="btn-back">← Volver al inicio</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Problem() {
+  const cards = [
+    { ico:'⏳', h:'Pierdes horas en tareas operativas', p:'Responder mensajes, enviar presupuestos, recordatorios… Tiempo que debería ir al negocio.' },
+    { ico:'❄️', h:'Los clientes potenciales se enfrían', p:'Si no respondes en minutos, el cliente busca a tu competencia. Sin automatización, pierdes ventas.' },
+    { ico:'📊', h:'Sin visión de lo que pasa', p:'No sabes cuántos leads tienes, qué pasa con cada uno ni qué proceso falla. Sin datos, sin mejora.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>El problema</span>
+            <h2 className="section-title">Tu negocio te consume más de lo que <span className="serif">debería</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-problem-grid">
+          {cards.map((c,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-problem-card">
+                <div className="sp-problem-ico">{c.ico}</div>
+                <h3>{c.h}</h3>
+                <p>{c.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Includes() {
+  const items = [
+    { ico:<Icon.Bolt s={20}/>, h:'Agentes de IA', p:'Sistemas que responden consultas, cualifican leads y gestionan conversaciones por ti en cualquier canal.' },
+    { ico:<Icon.Cog s={20}/>, h:'Procesos automatizados', p:'Desde el primer contacto hasta el cierre: cada paso ejecutado de forma automática y sin errores.' },
+    { ico:<Icon.Layers s={20}/>, h:'Todos los canales', p:'WhatsApp, email, Instagram, web… Tus clientes contactan donde quieren y siempre obtienen respuesta.' },
+    { ico:<Icon.Clock s={20}/>, h:'Agenda y reservas', p:'Citas gestionadas solas. El cliente reserva, recibe confirmación y recordatorio sin que tú intervengas.' },
+    { ico:<Icon.Smile s={20}/>, h:'Seguimiento de clientes', p:'Secuencias automáticas post-venta y de recuperación para que ningún cliente se pierda en el camino.' },
+    { ico:<Icon.Scale s={20}/>, h:'Dashboard de resultados', p:'Panel sencillo para ver en tiempo real cuántos leads entran, qué pasa con cada uno y qué genera dinero.' },
+  ];
+  return (
+    <section className="sp-section-alt">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Qué incluye</span>
+            <h2 className="section-title">Un sistema completo que <span className="serif">trabaja por ti</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-includes-grid">
+          {items.map((it,i)=>(
+            <Reveal delay={Math.min(i+1,4)} key={i}>
+              <div className="sp-includes-card">
+                <div className="sp-inc-icon">{it.ico}</div>
+                <h3>{it.h}</h3>
+                <p>{it.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  const steps = [
+    { n:'01', h:'Diagnóstico', p:'Analizamos tus procesos actuales, dónde pierdes tiempo y qué tareas son automatizables en tu caso concreto.' },
+    { n:'02', h:'Diseñamos el sistema', p:'Mapeamos el flujo completo: qué dispara cada automatización, qué hace y qué resultado produce. Tú lo apruebas.' },
+    { n:'03', h:'Implementación', p:'Construimos e integramos todos los sistemas con tus herramientas actuales. Probamos hasta que todo funciona perfectamente.' },
+    { n:'04', h:'Formación y soporte', p:'Te enseñamos a usar y monitorizar tu sistema. Seguimos contigo para ajustar y mejorar según evoluciona tu negocio.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Cómo trabajamos</span>
+            <h2 className="section-title">Un proceso predecible en <span className="serif">4 fases</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-process-steps">
+          {steps.map((s,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-step">
+                <div className="sp-step-num">{s.n}</div>
+                <h3>{s.h}</h3>
+                <p>{s.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Highlights() {
+  const items = [
+    { n:'−80%', label:'Tiempo en tareas repetitivas', p:'Nuestros clientes recuperan de media el 80% del tiempo que dedicaban a tareas manuales.' },
+    { n:'3×', label:'Más leads cualificados', p:'La respuesta instantánea y el seguimiento automático triplican la conversión de interesados a clientes.' },
+    { n:'24/7', label:'Tu negocio siempre disponible', p:'Los sistemas trabajan sin parar. Ningún cliente se queda sin respuesta porque tú estabas ocupado.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Resultados</span>
+            <h2 className="section-title">Lo que cambia cuando tu negocio <span className="serif">trabaja solo</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-problem-grid">
+          {items.map((it,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-problem-card" style={{textAlign:'center'}}>
+                <div style={{fontSize:'2.6rem',fontWeight:700,background:'linear-gradient(135deg,var(--c-primary),var(--c-accent))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',marginBottom:'8px'}}>{it.n}</div>
+                <h3 style={{marginBottom:'8px'}}>{it.label}</h3>
+                <p>{it.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpCTA() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <section className="sp-cta-section">
+      <div className="aurora" style={{pointerEvents:'none'}}>
+        <div className="blob aurora-1"/>
+        <div className="blob aurora-2"/>
+      </div>
+      <div className="wrap" style={{position:'relative',zIndex:2}}>
+        <Reveal>
+          <h2>Cada negocio es diferente.<br/>Cuéntanos los tuyos.</h2>
+        </Reveal>
+        <Reveal delay={1}>
+          <p>Te preparamos una propuesta de automatización personalizada sin compromiso.</p>
+        </Reveal>
+        <Reveal delay={2}>
+          <button className="btn btn-primary" onClick={openModal}><span>Solicitar propuesta gratuita <Icon.Arrow s={14}/></span></button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SpFAQ() {
+  const items = [
+    ['¿Necesito conocimientos técnicos para usar las automatizaciones?','No. Nos encargamos de toda la parte técnica. Te entregamos el sistema funcionando y te formamos para que puedas monitorizarlo con un panel sencillo, sin tocar código ni herramientas complejas.'],
+    ['¿Cuánto tarda en estar listo el sistema?','La mayoría de automatizaciones básicas están operativas en 72 horas tras la fase de diagnóstico. Proyectos más complejos con múltiples integraciones pueden llevar 1-2 semanas.'],
+    ['¿Con qué herramientas se integra?','Trabajamos con las herramientas más habituales: WhatsApp Business, Gmail, Google Calendar, CRMs (HubSpot, Airtable…), Instagram, webs con formularios y muchas más. Si usas algo específico, lo valoramos en la consulta.'],
+    ['¿Qué pasa si algo falla en el sistema?','Los sistemas incluyen alertas automáticas si algo se detiene. Además, en los paquetes con soporte, lo revisamos y arreglamos en menos de 24h. No te quedas solo con el sistema funcionando.'],
+    ['¿Puedo empezar con una sola automatización?','Sí. Podemos empezar por el proceso que más tiempo te roba y escalar desde ahí. No tienes que automatizarlo todo a la vez.'],
+    ['¿Qué información necesitáis para empezar?','Principalmente: qué procesos quieres automatizar, qué herramientas usas hoy, y qué resultado esperas. Lo descubrimos juntos en la consulta gratuita.'],
+  ];
+  const [open, setOpen] = React.useState(-1);
+  return (
+    <section className="sp-section-alt">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>FAQ</span>
+            <h2 className="section-title">Preguntas <span className="serif">frecuentes</span></h2>
+          </div>
+        </Reveal>
+        <Reveal delay={1}>
+          <div className="faq-list" style={{maxWidth:'760px',margin:'0 auto'}}>
+            {items.map(([q,a],i)=>(
+              <div className={`faq-item${open===i?' open':''}`} key={i}>
+                <button className="faq-q" onClick={()=>setOpen(open===i?-1:i)}>
+                  <span className="faq-num">0{i+1}</span>
+                  <span className="faq-q-text">{q}</span>
+                  <span className="faq-toggle"><Icon.Plus/></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">{a}</div></div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SpFooter() {
+  return (
+    <footer className="footer">
+      <div className="wrap">
+        <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'24px',alignItems:'center',paddingBottom:'24px',borderBottom:'1px solid rgba(255,255,255,.06)'}}>
+          <a href="index.html" className="logo" style={{color:'#fff'}}>
+            <span className="logo-mark"/>
+            <span><b>Digital Power</b> <span style={{opacity:.85,fontWeight:400}}>Studios</span></span>
+          </a>
+          <div style={{display:'flex',gap:'24px',fontSize:'14px'}}>
+            <a href="paginas-web.html" style={{color:'rgba(255,255,255,.6)'}}>Webs</a>
+            <a href="automatizaciones.html" style={{color:'rgba(255,255,255,.6)'}}>Automatizaciones</a>
+            <a href="seo.html" style={{color:'rgba(255,255,255,.6)'}}>SEO</a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2025 Digital Power Studios. Todos los derechos reservados.</span>
+          <a href="index.html" style={{color:'rgba(255,255,255,.45)'}}>← Volver al inicio</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  const [modalOpen, setModalOpen] = React.useState(false);
+  React.useEffect(()=>{
+    const open = ()=> setModalOpen(true);
+    window.addEventListener('openContactModal', open);
+    return ()=>window.removeEventListener('openContactModal', open);
+  },[]);
+  return (
+    <>
+      <ServiceNav/>
+      <Hero/>
+      <Problem/>
+      <Includes/>
+      <Process/>
+      <Highlights/>
+      <SpCTA/>
+      <SpFAQ/>
+      <SpFooter/>
+      <ContactModal open={modalOpen} onClose={()=>setModalOpen(false)}/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

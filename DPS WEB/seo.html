@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SEO y posicionamiento — Digital Power Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/Common.jsx"></script>
+<script type="text/babel">
+
+function ServiceNav() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <nav className="sp-nav">
+      <div className="sp-nav-inner">
+        <a href="index.html" className="logo">
+          <span className="logo-mark"/>
+          <span><b>Digital Power</b> <span className="muted">Studios</span></span>
+        </a>
+        <a href="index.html" className="sp-back-link">← Volver al inicio</a>
+        <button className="nav-cta" onClick={openModal}>Contactarnos</button>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <section className="sp-hero">
+      <div className="sp-hero-bg">
+        <div className="grid-bg"/>
+        <div className="orb orb-a"/>
+        <div className="orb orb-b"/>
+      </div>
+      <div className="wrap" style={{position:'relative',zIndex:2}}>
+        <Reveal>
+          <span className="sp-badge">SERVICIO — SEO y posicionamiento</span>
+        </Reveal>
+        <Reveal delay={1}>
+          <h1 className="sp-title">
+            Aparece primero<br/>
+            <span className="serif" style={{color:'#a89bff'}}>cuando importa</span>
+          </h1>
+        </Reveal>
+        <Reveal delay={2}>
+          <p className="sp-sub">Posicionamos tu negocio en Google para que los clientes te encuentren cuando te están buscando — sin pagar publicidad cada mes.</p>
+        </Reveal>
+        <Reveal delay={3}>
+          <ul className="sp-bullets">
+            {['Más visitas de personas que ya quieren lo que ofreces','Autoridad y confianza que ningún anuncio compra','Resultados que se acumulan y crecen con el tiempo'].map((b,i)=>(
+              <li key={i}><span className="bul-dot"/>{b}</li>
+            ))}
+          </ul>
+        </Reveal>
+        <Reveal delay={4}>
+          <div style={{display:'flex',gap:'14px',flexWrap:'wrap',alignItems:'center'}}>
+            <button className="btn btn-primary" onClick={openModal}><span>Contactarnos <Icon.Arrow s={14}/></span></button>
+            <a href="index.html" className="btn-back">← Volver al inicio</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Problem() {
+  const cards = [
+    { ico:'🔍', h:'Tu cliente te busca y encuentra a otro', p:'Si no apareces en la primera página de Google, prácticamente no existes. El 90% de clics van a los primeros resultados.' },
+    { ico:'💸', h:'Dependes de publicidad de pago', p:'Cuando dejas de pagar anuncios, dejas de tener visitas. El SEO es la alternativa que sigue funcionando sin coste mensual.' },
+    { ico:'🐌', h:'El trabajo sin SEO es lento y caro', p:'Conseguir clientes uno a uno por referidos tiene un techo. Con SEO, el canal trabaja por ti mientras tú te dedicas al negocio.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>El problema</span>
+            <h2 className="section-title">Si Google no te conoce, <span className="serif">tus clientes tampoco</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-problem-grid">
+          {cards.map((c,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-problem-card">
+                <div className="sp-problem-ico">{c.ico}</div>
+                <h3>{c.h}</h3>
+                <p>{c.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Includes() {
+  const items = [
+    { ico:<Icon.Search s={20}/>, h:'Revisión SEO completa', p:'Auditamos tu web desde cero: velocidad, estructura, errores técnicos y oportunidades de mejora inmediata.' },
+    { ico:<Icon.Scale s={20}/>, h:'Investigación de palabras clave', p:'Encontramos las búsquedas exactas que hacen tus clientes y construimos la estrategia sobre ellas.' },
+    { ico:<Icon.Cog s={20}/>, h:'SEO técnico', p:'Optimizamos la estructura interna, el rendimiento, el rastreo y la indexación para que Google entienda y posicione tu web.' },
+    { ico:<Icon.Browser s={20}/>, h:'Contenidos que posicionan', p:'Creamos y optimizamos páginas y artículos pensados para responder lo que buscan tus clientes potenciales.' },
+    { ico:<Icon.Layers s={20}/>, h:'Link building', p:'Conseguimos menciones y enlaces desde webs relevantes para aumentar la autoridad de tu dominio.' },
+    { ico:<Icon.Lock s={20}/>, h:'SEO local', p:'Si tu negocio es local, te posicionamos en Google Maps y búsquedas de tu zona para atraer clientes cercanos.' },
+  ];
+  return (
+    <section className="sp-section-alt">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Qué incluye</span>
+            <h2 className="section-title">Todo lo que necesitas para <span className="serif">dominar Google</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-includes-grid">
+          {items.map((it,i)=>(
+            <Reveal delay={Math.min(i+1,4)} key={i}>
+              <div className="sp-includes-card">
+                <div className="sp-inc-icon">{it.ico}</div>
+                <h3>{it.h}</h3>
+                <p>{it.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  const steps = [
+    { n:'01', h:'Análisis', p:'Auditamos tu situación actual en Google, la competencia y las palabras clave con mayor potencial para tu negocio.' },
+    { n:'02', h:'Estrategia', p:'Diseñamos un plan de acción con prioridades claras: qué mejorar primero, qué contenido crear y qué resultados esperar.' },
+    { n:'03', h:'Ejecución', p:'Implementamos los cambios técnicos, creamos los contenidos y construimos la autoridad de tu web mes a mes.' },
+    { n:'04', h:'Medición', p:'Reportes mensuales con datos reales: posiciones, tráfico, clics y conversiones. Sabes exactamente qué está pasando.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Cómo trabajamos</span>
+            <h2 className="section-title">Un proceso predecible en <span className="serif">4 fases</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-process-steps">
+          {steps.map((s,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-step">
+                <div className="sp-step-num">{s.n}</div>
+                <h3>{s.h}</h3>
+                <p>{s.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Highlights() {
+  const items = [
+    { n:'Top 3', label:'Resultados alcanzables', p:'La mayoría de nuestros clientes alcanzan las primeras posiciones para sus búsquedas clave en 3-6 meses.' },
+    { n:'+200%', label:'Aumento de tráfico orgánico', p:'Más visitas de personas que ya buscan lo que ofreces, sin pagar por cada clic.' },
+    { n:'∞', label:'Sin coste por clic', p:'El tráfico orgánico que consigues con SEO es tuyo. No pagas cada vez que alguien te visita.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Resultados</span>
+            <h2 className="section-title">Lo que ocurre cuando <span className="serif">Google trabaja para ti</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-problem-grid">
+          {items.map((it,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-problem-card" style={{textAlign:'center'}}>
+                <div style={{fontSize:'2.6rem',fontWeight:700,background:'linear-gradient(135deg,var(--c-primary),var(--c-accent))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',marginBottom:'8px'}}>{it.n}</div>
+                <h3 style={{marginBottom:'8px'}}>{it.label}</h3>
+                <p>{it.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpCTA() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <section className="sp-cta-section">
+      <div className="aurora" style={{pointerEvents:'none'}}>
+        <div className="blob aurora-1"/>
+        <div className="blob aurora-2"/>
+      </div>
+      <div className="wrap" style={{position:'relative',zIndex:2}}>
+        <Reveal>
+          <h2>El mejor momento para empezar con SEO<br/>fue hace un año. El segundo mejor es hoy.</h2>
+        </Reveal>
+        <Reveal delay={1}>
+          <p>Analizamos tu situación actual sin compromiso y te decimos qué oportunidades estás perdiendo.</p>
+        </Reveal>
+        <Reveal delay={2}>
+          <button className="btn btn-primary" onClick={openModal}><span>Solicitar análisis gratuito <Icon.Arrow s={14}/></span></button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SpFAQ() {
+  const items = [
+    ['¿Cuánto tarda el SEO en dar resultados?','El SEO es una estrategia a medio-largo plazo. Los primeros resultados visibles suelen aparecer entre los 2 y 4 meses. Para posiciones consolidadas en búsquedas competitivas, el horizonte habitual son 6-12 meses. Cuanto antes empieces, antes ves resultados.'],
+    ['¿Qué diferencia hay entre SEO y publicidad en Google?','Con publicidad (Google Ads) pagas por cada clic y cuando dejas de pagar, desapareces. Con SEO, el tráfico que consigues es orgánico — permanece y crece aunque dejes de invertir activamente.'],
+    ['¿Necesito una web nueva para hacer SEO?','No necesariamente. Podemos optimizar tu web actual. En algunos casos, si la web tiene problemas graves de estructura o rendimiento, puede ser más eficiente rehacerla, pero lo valoramos caso por caso.'],
+    ['¿Cómo sé que el SEO está funcionando?','Te enviamos reportes mensuales con datos reales: posiciones en Google, tráfico orgánico, clics, impresiones y evolución mes a mes. Todo con datos verificables de Google Search Console y Analytics.'],
+    ['¿Hacéis SEO local?','Sí. Si tu negocio depende de clientes de una zona geográfica concreta, optimizamos tu presencia en Google Maps, Google Business Profile y búsquedas locales para que aparezcas cuando alguien busca en tu área.'],
+    ['¿Con qué frecuencia trabajáis en el SEO?','El SEO requiere trabajo continuado. No es una acción puntual sino un proceso mensual: análisis, ajustes técnicos, creación de contenidos, construcción de autoridad y medición de resultados.'],
+  ];
+  const [open, setOpen] = React.useState(-1);
+  return (
+    <section className="sp-section-alt">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>FAQ</span>
+            <h2 className="section-title">Preguntas <span className="serif">frecuentes</span></h2>
+          </div>
+        </Reveal>
+        <Reveal delay={1}>
+          <div className="faq-list" style={{maxWidth:'760px',margin:'0 auto'}}>
+            {items.map(([q,a],i)=>(
+              <div className={`faq-item${open===i?' open':''}`} key={i}>
+                <button className="faq-q" onClick={()=>setOpen(open===i?-1:i)}>
+                  <span className="faq-num">0{i+1}</span>
+                  <span className="faq-q-text">{q}</span>
+                  <span className="faq-toggle"><Icon.Plus/></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">{a}</div></div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SpFooter() {
+  return (
+    <footer className="footer">
+      <div className="wrap">
+        <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'24px',alignItems:'center',paddingBottom:'24px',borderBottom:'1px solid rgba(255,255,255,.06)'}}>
+          <a href="index.html" className="logo" style={{color:'#fff'}}>
+            <span className="logo-mark"/>
+            <span><b>Digital Power</b> <span style={{opacity:.85,fontWeight:400}}>Studios</span></span>
+          </a>
+          <div style={{display:'flex',gap:'24px',fontSize:'14px'}}>
+            <a href="paginas-web.html" style={{color:'rgba(255,255,255,.6)'}}>Webs</a>
+            <a href="automatizaciones.html" style={{color:'rgba(255,255,255,.6)'}}>Automatizaciones</a>
+            <a href="seo.html" style={{color:'rgba(255,255,255,.6)'}}>SEO</a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2025 Digital Power Studios. Todos los derechos reservados.</span>
+          <a href="index.html" style={{color:'rgba(255,255,255,.45)'}}>← Volver al inicio</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  const [modalOpen, setModalOpen] = React.useState(false);
+  React.useEffect(()=>{
+    const open = ()=> setModalOpen(true);
+    window.addEventListener('openContactModal', open);
+    return ()=>window.removeEventListener('openContactModal', open);
+  },[]);
+  return (
+    <>
+      <ServiceNav/>
+      <Hero/>
+      <Problem/>
+      <Includes/>
+      <Process/>
+      <Highlights/>
+      <SpCTA/>
+      <SpFAQ/>
+      <SpFooter/>
+      <ContactModal open={modalOpen} onClose={()=>setModalOpen(false)}/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

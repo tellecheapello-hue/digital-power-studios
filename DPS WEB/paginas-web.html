@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Páginas Web — Digital Power Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/Common.jsx"></script>
+<script type="text/babel">
+
+function ServiceNav() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <nav className="sp-nav">
+      <div className="sp-nav-inner">
+        <a href="index.html" className="logo">
+          <span className="logo-mark"/>
+          <span><b>Digital Power</b> <span className="muted">Studios</span></span>
+        </a>
+        <a href="index.html" className="sp-back-link">← Volver al inicio</a>
+        <button className="nav-cta" onClick={openModal}>Contactarnos</button>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <section className="sp-hero">
+      <div className="sp-hero-bg">
+        <div className="grid-bg"/>
+        <div className="orb orb-a"/>
+        <div className="orb orb-b"/>
+      </div>
+      <div className="wrap" style={{position:'relative',zIndex:2}}>
+        <Reveal>
+          <span className="sp-badge">SERVICIO — Páginas Web premium</span>
+        </Reveal>
+        <Reveal delay={1}>
+          <h1 className="sp-title">
+            Webs que no son bonitas:<br/>
+            <span className="serif" style={{color:'#a89bff'}}>venden</span>
+          </h1>
+        </Reveal>
+        <Reveal delay={2}>
+          <p className="sp-sub">Diseñamos y desarrollamos webs rápidas, accesibles y orientadas a conversión. Cada píxel está pensado para que un visitante se convierta en cliente.</p>
+        </Reveal>
+        <Reveal delay={3}>
+          <ul className="sp-bullets">
+            {['Diseño a medida, no plantillas','Lista para recibir clientes desde el primer día','Refleja quién eres y por qué elegirte'].map((b,i)=>(
+              <li key={i}><span className="bul-dot"/>{b}</li>
+            ))}
+          </ul>
+        </Reveal>
+        <Reveal delay={4}>
+          <div style={{display:'flex',gap:'14px',flexWrap:'wrap',alignItems:'center'}}>
+            <button className="btn btn-primary" onClick={openModal}><span>Contactarnos <Icon.Arrow s={14}/></span></button>
+            <a href="index.html" className="btn-back">← Volver al inicio</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Problem() {
+  const cards = [
+    { ico:'😟', h:'No transmites profesionalidad', p:'Una web genérica genera dudas. El usuario sale antes de saber qué ofreces.' },
+    { ico:'🤷', h:'El visitante no sabe qué hacer', p:'Sin jerarquía clara ni llamadas a la acción, no hay conversión.' },
+    { ico:'🐢', h:'Lenta, frágil, sin estrategia', p:'Velocidad pobre, sin SEO y difícil de mantener.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>El problema</span>
+            <h2 className="section-title">Tu web actual te está <span className="serif">costando clientes</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-problem-grid">
+          {cards.map((c,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-problem-card">
+                <div className="sp-problem-ico">{c.ico}</div>
+                <h3>{c.h}</h3>
+                <p>{c.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Includes() {
+  const items = [
+    { ico:<Icon.Browser s={20}/>, h:'Diseño UX/UI a medida', p:'Diseño único alineado con tu marca pensado para guiar al usuario hacia la conversión.' },
+    { ico:<Icon.Bolt s={20}/>, h:'Tecnología moderna', p:'Construida con las mejores herramientas para que sea rápida, fiable y fácil de actualizar.' },
+    { ico:<Icon.Smile s={20}/>, h:'Diseñada para móvil', p:'Más del 70% de tu tráfico llega desde el móvil. Tu web funciona perfecta en todos los dispositivos.' },
+    { ico:<Icon.Scale s={20}/>, h:'Carga en segundos', p:'Tu web abre rápido en cualquier dispositivo para que no pierdas ningún visitante.' },
+    { ico:<Icon.Search s={20}/>, h:'Lista para Google', p:'Preparada desde el inicio para que te encuentren cuando te busquen.' },
+    { ico:<Icon.Cog s={20}/>, h:'Panel de edición', p:'Edita textos, imágenes y secciones tú mismo, sin tocar código.' },
+    { ico:<Icon.Lock s={20}/>, h:'Segura y protegida', p:'Con copia de seguridad automática y protección contra accesos no deseados.' },
+    { ico:<Icon.Layers s={20}/>, h:'Conectada con tus herramientas', p:'Pagos, reservas, formularios y todo lo que necesitas, funcionando desde el primer día.' },
+  ];
+  return (
+    <section className="sp-section-alt">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Qué incluye</span>
+            <h2 className="section-title">Todo lo que necesitas para <span className="serif">vender online</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-includes-grid">
+          {items.map((it,i)=>(
+            <Reveal delay={Math.min(i+1,4)} key={i}>
+              <div className="sp-includes-card">
+                <div className="sp-inc-icon">{it.ico}</div>
+                <h3>{it.h}</h3>
+                <p>{it.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  const steps = [
+    { n:'01', h:'Estrategia', p:'Definimos objetivos, audiencia y mensajes clave. Sin estrategia no hay diseño bueno.' },
+    { n:'02', h:'Diseño', p:'Diseñamos el aspecto y estructura de tu web contigo, sección a sección. Tú apruebas antes de construir nada.' },
+    { n:'03', h:'Desarrollo', p:'Construimos tu web con tecnología de última generación. Rápida, bonita y pensada para convertir.' },
+    { n:'04', h:'Lanzamiento', p:'Pruebas finales, publicación y formación básica para que puedas gestionar tu web.' },
+  ];
+  return (
+    <section className="sp-section">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>Cómo trabajamos</span>
+            <h2 className="section-title">Un proceso predecible en <span className="serif">4 fases</span></h2>
+          </div>
+        </Reveal>
+        <div className="sp-process-steps">
+          {steps.map((s,i)=>(
+            <Reveal delay={i+1} key={i}>
+              <div className="sp-step">
+                <div className="sp-step-num">{s.n}</div>
+                <h3>{s.h}</h3>
+                <p>{s.p}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpCTA() {
+  const openModal = ()=> window.dispatchEvent(new CustomEvent('openContactModal'));
+  return (
+    <section className="sp-cta-section">
+      <div className="aurora" style={{pointerEvents:'none'}}>
+        <div className="blob aurora-1"/>
+        <div className="blob aurora-2"/>
+      </div>
+      <div className="wrap" style={{position:'relative',zIndex:2}}>
+        <Reveal>
+          <h2>Cada proyecto es diferente.<br/>Cuéntanos qué necesitas.</h2>
+        </Reveal>
+        <Reveal delay={1}>
+          <p>Te preparamos una propuesta personalizada sin compromiso.</p>
+        </Reveal>
+        <Reveal delay={2}>
+          <button className="btn btn-primary" onClick={openModal}><span>Solicitar propuesta gratuita <Icon.Arrow s={14}/></span></button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SpFAQ() {
+  const items = [
+    ['¿Cuánto tarda en estar lista mi web?','La mayoría de proyectos web están listos en 1 a 3 semanas, dependiendo de la complejidad. Proyectos de una página simple pueden entregarse en 72 horas tras la fase de descubrimiento.'],
+    ['¿Puedo editar la web yo mismo después?','Sí. Te entregamos un panel de gestión sencillo para que puedas actualizar textos, imágenes y contenido sin necesidad de saber programar.'],
+    ['¿Incluye dominio y hosting?','El dominio y hosting no están incluidos en el precio del proyecto. Te ayudamos a contratar las mejores opciones para tu caso y configurarlo todo.'],
+    ['¿Qué pasa si quiero añadir páginas después?','Sin problema. La web se construye de forma que sea fácil de ampliar. Añadir páginas o secciones nuevas se puede hacer en cualquier momento.'],
+    ['¿Hacéis tiendas online?','Sí, desarrollamos tiendas online completas. Si necesitas vender productos, háblanos de tu proyecto y te preparamos una propuesta específica.'],
+    ['¿Qué necesito tener preparado para empezar?','Principalmente: tu logo si tienes uno, los textos de tu negocio, imágenes o fotos si las tienes, y acceso a tu dominio si ya tienes uno. Nosotros te guiamos en todo.'],
+  ];
+  const [open, setOpen] = React.useState(-1);
+  return (
+    <section className="sp-section-alt">
+      <div className="wrap">
+        <Reveal>
+          <div className="section-head">
+            <span className="eyebrow"><span className="bar"/>FAQ</span>
+            <h2 className="section-title">Preguntas <span className="serif">frecuentes</span></h2>
+          </div>
+        </Reveal>
+        <Reveal delay={1}>
+          <div className="faq-list" style={{maxWidth:'760px',margin:'0 auto'}}>
+            {items.map(([q,a],i)=>(
+              <div className={`faq-item${open===i?' open':''}`} key={i}>
+                <button className="faq-q" onClick={()=>setOpen(open===i?-1:i)}>
+                  <span className="faq-num">0{i+1}</span>
+                  <span className="faq-q-text">{q}</span>
+                  <span className="faq-toggle"><Icon.Plus/></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">{a}</div></div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SpFooter() {
+  return (
+    <footer className="footer">
+      <div className="wrap">
+        <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:'24px',alignItems:'center',paddingBottom:'24px',borderBottom:'1px solid rgba(255,255,255,.06)'}}>
+          <a href="index.html" className="logo" style={{color:'#fff'}}>
+            <span className="logo-mark"/>
+            <span><b>Digital Power</b> <span style={{opacity:.85,fontWeight:400}}>Studios</span></span>
+          </a>
+          <div style={{display:'flex',gap:'24px',fontSize:'14px'}}>
+            <a href="paginas-web.html" style={{color:'rgba(255,255,255,.6)'}}>Webs</a>
+            <a href="automatizaciones.html" style={{color:'rgba(255,255,255,.6)'}}>Automatizaciones</a>
+            <a href="seo.html" style={{color:'rgba(255,255,255,.6)'}}>SEO</a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2025 Digital Power Studios. Todos los derechos reservados.</span>
+          <a href="index.html" style={{color:'rgba(255,255,255,.45)'}}>← Volver al inicio</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  const [modalOpen, setModalOpen] = React.useState(false);
+  React.useEffect(()=>{
+    const open = ()=> setModalOpen(true);
+    window.addEventListener('openContactModal', open);
+    return ()=>window.removeEventListener('openContactModal', open);
+  },[]);
+  return (
+    <>
+      <ServiceNav/>
+      <Hero/>
+      <Problem/>
+      <Includes/>
+      <Process/>
+      <SpCTA/>
+      <SpFAQ/>
+      <SpFooter/>
+      <ContactModal open={modalOpen} onClose={()=>setModalOpen(false)}/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
